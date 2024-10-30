@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员管理系统 - 登录</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">会员管理系统 - 登录</h2>
+    <!-- 登录表单 -->
+    <div class="card mb-4">
+        <div class="card-header">登录</div>
+        <div class="card-body">
+            <form id="login-form">
+                {% csrf_token %}  <!-- 添加 CSRF 令牌 -->
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">登录</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // 登录的事件处理
+    $('#login-form').on('submit', function (e) {
+        e.preventDefault();
+        // 在这里提交登录数据给服务器
+        // 登录处理的代码
+        // 获取表单数据
+        const username = $('#username').val();
+        const password = $('#password').val();
+
+
+        // 发送到服务器
+        $.ajax({
+            url: '/login/',
+            type: 'POST',
+            data: {
+                username: username,
+                password: password,
+                csrfmiddlewaretoken: $('[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function(response){
+                if (response.redirect_url){
+                    window.location.href = response.redirect_url;
+                } else{
+                  alert('登录失败：用户或者密码名错误，请重新输入');
+                }
+
+            },
+            error: function(xhr,status,error){
+                alert('登录失败： '+ error);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

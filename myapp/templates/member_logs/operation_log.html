@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作日志</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--操作日志css-->
+    <link rel="stylesheet" href="{% static 'css/operation_log.css' %}">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">操作日志</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'member-management' %}" id="operation-log" >会员管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" id="logout">登出</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h2 class="text-center mb-4">操作日志</h2>
+    <div class="card mb-4">
+        <div class="card-header">查询操作日志</div>
+        <div class="card-body">
+            <form id="search-log-form" class="mb-3">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="start-date">开始日期</label>
+                        <input type="date" class="form-control" id="start-date" name="start_date">
+                    </div>
+                    <div class="col">
+                        <label for="end-date">结束日期</label>
+                        <input type="date" class="form-control" id="end-date" name="end_date">
+                    </div>
+                    <div class="col">
+                        <label for="log-name">会员姓名</label>
+                        <input type="text" class="form-control" id="log-name" name="log_name" placeholder="会员姓名">
+                    </div>
+                    <div class="col">
+                        <label for="log-phone">电话</label>
+                        <input type="text" class="form-control" id="log-phone" name="log_phone" placeholder="电话">
+                    </div>
+                    <div class="col align-self-end">
+                        <button type="submit" class="btn btn-primary" id="btn-search">查询</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>操作时间</th>
+                    <th>会员姓名</th>
+                    <th>电话</th>
+                    <th>操作</th>
+                    <th>操作报文</th>
+                </tr>
+                </thead>
+                <tbody id="log-list">
+                <!-- 操作日志数据会在这里显示 -->
+                </tbody>
+            </table>
+            <div class="container">
+                <!-- 分页组件 -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="first-page">
+                            <a class="page-link" href="#" tabindex="-1" >首页</a>
+                        </li>
+                        <li class="page-item" id="prev-page">
+                            <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item" id="next-page">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                        <li class="page-item" id="last-page">
+                            <a class="page-link" href="#">末页</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/operation_log.js' %}"></script>
+</body>
+</html>

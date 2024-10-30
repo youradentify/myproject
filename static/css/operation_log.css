@@ -1,0 +1,14 @@
+/* 限制操作报文的宽度并使用省略号表示超出部分 */
+.operation-request {
+    display: inline-block !important;  /* 行内块元素 */
+    width: 250px !important;           /* 固定宽度 */
+    white-space: nowrap !important;    /* 不换行 */
+    overflow: hidden !important;       /* 超出部分隐藏 */
+    text-overflow: ellipsis !important;/* 显示省略号 */
+    cursor: pointer !important;        /* 鼠标变为手形，提示用户可以点击查看详情 */
+}
+
+    .page-item.disabled a {
+    pointer-events: none;
+    opacity: 0.6; /* 或其他视觉上的提示，例如颜色变浅 */
+    }

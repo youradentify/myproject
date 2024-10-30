@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 新增会员模态框 -->
+    <div id="addMemberModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddMemberModal()">&times;</span>
+            <h2>新增会员</h2>
+            <form id="addMemberForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" class="form-control" pattern="^[\u4e00-\u9fa5a-zA-Z ]+$"
+                            required>
+                    <small class="form-text text-muted">姓名只能包含中文,英文字母和空格。</small>
+                </div>
+                <div class="form-group">
+                    <label for="phone">电话</label>
+                    <input type="text" id="phone" name="phone" class="form-control" pattern="^\d+$"
+                          required>
+                    <small class="form-text text-muted">电话只能为数字。</small>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseCount">购买次数</label>
+                    <input type="number" id="purchaseCount" name="purchaseCount" class="form-control" min="1"
+                     required>
+                    <small class="form-text text-muted">购买次数必须为正整数。</small>
+                </div>
+                <div class="form-group">
+                    <label for="remainingCount">剩余次数</label>
+                    <input type="number" id="remainingCount" name="remainingCount" class="form-control" min="1"
+                            required>
+                    <small class="form-text text-muted">购买次数必须为正整数，且不能大于购买次数。</small>
+                </div>
+                <button type="button" class="btn btn-success" onclick="addMember()">保存</button>
+            </form>
+        </div>
+    </div>
+<body>
+
+</body>
+</html>

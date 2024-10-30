@@ -1,0 +1,28 @@
+        /* 模态框的整体样式 */
+.modal {
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 模态框内容部分 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* 圆角更大一些，更友好 */
+    width: 400px; /* 控制模态框的宽度 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 使模态框看起来更有立体感 */
+    position: relative;
+}
+
+.page-item.disabled a {
+    pointer-events: none;
+    opacity: 0.6; /* 或其他视觉上的提示，例如颜色变浅 */
+    }
