@@ -149,6 +149,7 @@ $('#search-member-button').click(function(event) {
  // 显示新增会员模态框
 function showAddMemberModal() {
     document.getElementById('addMemberModal').style.display = 'flex';
+    $('#addMemberModal input').val('')
 }
 
 // 关闭新增会员模态框
@@ -165,8 +166,8 @@ function addMember() {
     // 获取表单数据
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
-    const purchaseCount = document.getElementById('purchaseCount').value;
-    const remainingCount = document.getElementById('remainingCount').value;
+    const purchaseCount = parseInt(document.getElementById('purchaseCount').value);
+    const remainingCount = parseInt(document.getElementById('remainingCount').value);
     // 正则验证姓名是否包含特殊字符
     const namePattern = /^[\u4e00-\u9fa5a-zA-Z ]+$/;
     if (!namePattern.test(name)) {
@@ -244,6 +245,8 @@ function showEditMemberModal(memberId) {
 
     // 打开模态框
     document.getElementById('editMemberModal').style.display = 'flex';
+    //清空模态框
+
 }
 
 // 关闭编辑会员模态框

@@ -138,6 +138,8 @@ STATICFILES_DIRS = [os.path.abspath(os.path.join(BASE_DIR, 'static'))]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+
+
 # default path
 OPERATION_LOGIN_PATH = 'member_logs/operation_log.html'
 AUTH_PATH = 'member_auth/login.html'

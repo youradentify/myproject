@@ -1,5 +1,4 @@
 
-
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.generic import TemplateView
@@ -7,17 +6,14 @@ from myapp.models import  OperationInfo
 from myapp.utils.logging_config import LoggingConfig
 from django.conf import settings
 
-
 logger = LoggingConfig()
 
 # 会员管理系统
 # 操作日志的查询
 class OperationLogView(TemplateView):
     template_name = settings.OPERATION_LOGIN_PATH
-
     # 通过字段来查询
     def get(self, request, *args, **kwargs):
-
         # 检查是否为ajax请求，用于查询日志数据
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             starttime = request.GET.get('starttime')
@@ -45,8 +41,6 @@ class OperationLogView(TemplateView):
                 logs = OperationInfo.objects.filter(operationtime__gte=starttime, operationtime__lte=endtime,
                                                     membername__exact=logname, membertelphone__exact=logphone)
 
-            # if not starttime and not endtime and not logname and not logphone:
-            #     logs = OperationInfo.objects.all()
             # 分页
             paginator = Paginator(logs, page_size)
             members_page = paginator.get_page(page)
