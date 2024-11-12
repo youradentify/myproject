@@ -24,3 +24,4 @@ urllib3==2.2.2
 virtualenv==20.26.4
 websocket-client==1.8.0
 wsproto==1.2.0
+Gunicorn==23.0.0
